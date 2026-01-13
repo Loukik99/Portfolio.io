@@ -1,0 +1,88 @@
+<h1>Build Your Portfolio</h1>
+<form id="portfolio-form">
+  <!-- Basic Information -->
+  <div>
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+  </div>
+  <div>
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+  </div>
+
+  <!-- Roles -->
+  <div>
+    <label for="roles">Roles (comma-separated):</label>
+    <textarea id="roles" name="roles" placeholder="E.g., Frontend Developer, Data Analyst"></textarea>
+  </div>
+
+  <!-- Skills -->
+  <div>
+    <label for="skills">Skills (comma-separated):</label>
+    <textarea id="skills" name="skills" placeholder="E.g., JavaScript, React, Python"></textarea>
+  </div>
+
+  <!-- Bio -->
+  <div>
+    <label for="bio">About me:</label>
+    <textarea id="bio" name="bio" placeholder="Write a short bio about yourself"></textarea>
+  </div>
+
+  <!-- Education -->
+  <div>
+    <label for="education">Education:</label>
+    <textarea id="education" name="education" placeholder="E.g., B.Tech in Computer Science, 2023"></textarea>
+  </div>
+
+  <!-- Projects -->
+  <div>
+    <label for="projects">Projects:</label>
+    <textarea id="projects" name="projects" placeholder="E.g., Portfolio Builder Website, Vehicle Management System"></textarea>
+  </div>
+
+  <!-- Experience -->
+  <div>
+    <label for="experience">Experience:</label>
+    <textarea id="experience" name="experience" placeholder="E.g., 6-week internship in Frontend Development"></textarea>
+  </div>
+
+  <!-- Links -->
+  <div>
+    <label for="links">Links:</label>
+    <textarea id="links" name="links" placeholder="E.g., Github Link or LinkedIn Link"></textarea>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit">Select Template</button>
+</form>
+
+<script>
+  document.getElementById("portfolio-form").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent form submission
+
+    // Collect data from the form
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const roles = document.getElementById("roles").value.split(",").map(role => role.trim());
+    const skills = document.getElementById("skills").value.split(",").map(skill => skill.trim());
+    const bio = document.getElementById("bio").value;
+    const education = document.getElementById("education").value;
+    const projects = document.getElementById("projects").value;
+    const experience = document.getElementById("experience").value;
+    const links = document.getElementById("links").value;
+
+    // Save data to localStorage
+    localStorage.setItem(
+      "portfolioData",
+      JSON.stringify({ name, email, phone, roles, skills, bio, education, projects, experience, links })
+    );
+
+    // Redirect to the template selection page
+    window.location.href = "templates_selection.html";
+  });
+</script>

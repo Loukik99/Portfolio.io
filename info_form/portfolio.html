@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Portfolio</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/script.js"></script>
+  <link rel="stylesheet" href="assets/css/mediaqueries.css" />
+
+
+
+</head>
+<body>
+  <!-- <nav>
+    <label class="logo">Portfolio<span>.io</span></label>
+  </nav> -->
+  <div class="wrapper">
+    <!-- <h1>Your Portfolio</h1> -->
+    <div id="portfolio-output">
+      <!-- Dynamic Content Goes Here -->
+    </div>
+    <a href="info.html"><button>Update Information</button></a>
+  </div>
+</body>
+<script>
+ document.addEventListener("DOMContentLoaded", async function() {
+    let d = null;
+    try {
+      let r = await fetch('http://localhost:5001/api/portfolio', { credentials: 'include' });
+      if (!r.ok) r = await fetch('http://localhost:5000/api/portfolio', { credentials: 'include' });
+      if (r.ok) {
+        const s = await r.json();
+        d = Array.isArray(s) ? s[s.length - 1] : s;
+      }
+    } catch {}
+    try {
+      if (d) {
+        const { name, email, phone, skills, skill1, skill2, skill3, skill4, skill5, skill6, bio, education, links, experience, roles, project1, project2, project3, project_details1, project_details2, project_details3 } = d;
+        const nameDisplay = name || 'Your Name';
+        const emailDisplay = email || 'your@email.com';
+        const phoneDisplay = phone || '+91 90000 00000';
+        const rolesDisplay = Array.isArray(roles) ? roles.join(', ') : (roles || '');
+        const s1 = skill1 || '';
+        const s2 = skill2 || '';
+        const s3 = skill3 || '';
+        const s4 = skill4 || '';
+        const s5 = skill5 || '';
+        const s6 = skill6 || '';
+        const bioDisplay = bio || '';
+        const eduDisplay = education || '';
+        const pArr = Array.isArray(d.projects) ? d.projects : [];
+        const proj1 = (pArr[0]?.name) || project1 || '';
+        const proj2 = (pArr[1]?.name) || project2 || '';
+        const proj3 = (pArr[2]?.name) || project3 || '';
+        const projDet1 = (pArr[0]?.details) || project_details1 || '';
+        const projDet2 = (pArr[1]?.details) || project_details2 || '';
+        const projDet3 = (pArr[2]?.details) || project_details3 || '';
+        document.getElementById("portfolio-output").innerHTML = ` 
+<nav id="desktop-nav">
+      <div class="logo">${nameDisplay}</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">${nameDisplay}</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container" style="display:none"></div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">${nameDisplay}</h1>
+        <p class="section__text__p2">${rolesDisplay}</p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/resume-example.pdf')"
+          >
+            Download CV
+          </button>
+          
+          <a href="#contact" class="btn btn-color-1">
+            Contact Info
+          </a>
+        </div>
+        <div id="socials-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://linkedin.com/'"
+          />
+          <img
+            src="./assets/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/'"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container" style="display:none"></div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Experience</h3>
+              <p>${experience || ''}</p>
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Education</h3>
+              <p>${eduDisplay}<br /></p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+            ${bioDisplay}
+            </p>
+         </div>
+       </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#experience'"
+      />
+    </section>
+    <section id="experience">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Skills</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">Skill Set</h2>
+             <div class="article-container">
+               <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                 <div>
+                   <h3>${s1}</h3>
+                 </div>
+               </article>
+               <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                 <div>
+                   <h3>${s2}</h3>
+                 </div>
+               </article>
+               <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                 <div>
+                   <h3>${s3}</h3>
+                 </div>
+               </article>
+               <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                 <div>
+                   <h3>${s4}</h3>
+                 </div>
+               </article>
+               <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                 <div>
+                   <h3>${s5}</h3>
+                 </div>
+               </article>
+               <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                 <div>
+                   <h3>${s6}</h3>
+                 </div>
+               </article>
+             </div>
+           </div>
+           
+         </div>
+       </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#projects'"
+      />
+    </section>
+    <section id="projects">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/project1.png"
+                alt="Project 1"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">${proj1}</h2>
+            <p>${projDet1}</p>
+            <div class="btn-container">
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/project2.png"
+                alt="Project 2"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">${proj2}</h2>
+            <p>${projDet2}</p>
+            <div class="btn-container">
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/project3.png"
+                alt="Project 3"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">${proj3}</h2>
+            <p>${projDet3}</p>
+            <div class="btn-container">
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#contact'"
+      />
+    </section>
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:${emailDisplay}">${emailDisplay}</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/phoneicon.png"
+            alt="Phone icon"
+            class="icon contact-icon"
+          />
+          <p><a href="tel:${phoneDisplay}">${phoneDisplay}</a></p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>Copyright &#169; 2023 ${nameDisplay}. All Rights Reserved.</p>
+    </footer>
+
+      `;
+      } else {
+        document.getElementById("portfolio-output").innerHTML = `
+          <p>No information available. Please <a href="info.html">fill out the form</a>.</p>
+        `;
+      }
+    } catch (error) {
+      document.getElementById("portfolio-output").innerHTML = `
+        <p>Error fetching portfolio data. Please try again later.</p>
+      `;
+    }
+  });
+</script>
+</html>

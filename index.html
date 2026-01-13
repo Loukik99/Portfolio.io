@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Portfolio.io</title>
+  </head>
+  <body>
+    <!-- -----------navigation---------- -->
+    <nav>
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars" id="bars"></i>
+        <i class="fas fa-times" id="cancel"></i>
+      </label>
+
+      <label class="logo">Portfolio<span>.io</span></label>
+
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#" id="nav-build">Build Portfolio</a></li>
+        <li><a href="#about-us">About us</a></li>
+        <li><a href="#countact-us">Contact us</a></li>
+        <li><a href="./forms/login.html" id="login-link">Login</a></li>
+        <li><a href="#" id="logout-link" style="display:none;">Logout</a></li>
+      </ul>
+    </nav>
+
+    <!-- -----------------home-------------------------- -->
+    <header id="home" class="header">
+      <div class="bg_image">
+        <div class="content">
+          <h1 class="heading">
+            <span class="portfolio">Portfolio</span
+            ><span class="highlight">.io</span>
+          </h1>
+          <p class="description">
+            <span>Portfolio.io</span> helps individuals and professionals create
+            standout portfolio websites effortlessly. With customizable
+            templates and easy-to-use tools, it empowers you to showcase your
+            skills, achievements, and projects in style, making it easy to leave
+            a lasting impression in the digital world.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ----------------build portfolio-------------------------------- -->
+    <div id="build-portfolio">
+      <section class="build-portfpli-section">
+        <div class="image-container">
+          <img src="./media/home.png" alt="Portfolio Preview" />
+        </div>
+        <div class="text-container">
+          <h1>Create a portfolio website</h1>
+          <p>
+            Showcase your work online with a portfolio website. Get started with
+            a professionally designed template that can be customized to fit
+            your brand.
+          </p>
+          <button class="cta-button" id="build-cta">Build Your Portfolio</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- --------------About us--------------------------------- -->
+    <div class="aboutsec">
+      <div id="about-us" class="about-us-heading">
+        <h1>About us</h1>
+        <p>
+          <span>Portfolio.io</span> helps individuals and professionals create
+          standout portfolio websites effortlessly. With customizable templates
+          and easy-to-use tools, it empowers you to showcase your skills,
+          achievements, and projects in style, making it easy to leave a lasting
+          impression in the digital world.
+        </p>
+      </div>
+      <div class="about-container">
+        <section class="about">
+          <div class="about-image">
+            <img src="./media/about_us.jpg" />
+          </div>
+          <div class="about-content">
+            <h2>Welcome to our Tech World!</h2>
+            <p>
+              Explore the future of portfolio creation with Portfolio.io From
+              sleek templates to seamless customization, we provide everything
+              you need to build a professional online presence that reflects
+              your unique story.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ------------------------Contact us ----------------- -->
+    <section class="contact">
+      <div id="countact-us" class="contact-container">
+        <h2>Contact us</h2>
+        <div class="contact-wrapper">
+          <div class="contact-form">
+            <h3>Send us a message</h3>
+            <form>
+              <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" />
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" />
+              </div>
+              <div class="form-group">
+                <textarea name="message" placeholder="Your Message"></textarea>
+              </div>
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+          <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p><i class="fas fa-envelope"></i> portfolio.io@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +91 8624949257</p>
+            <p><i class="fas fa-map-marker-alt"></i> Aundh Pune, India</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------footer-------------------------- -->
+    <footer>
+      <div class="footer-container">
+        <!-- Contact Us Section -->
+        <div class="footer-content">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-envelope"></i> Email: portfolio.io@gmail.com</p>
+          <p><i class="fas fa-phone"></i> Phone: +91 8624949257</p>
+          <p><i class="fas fa-map-marker-alt"></i> Address: Pune, India</p>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="footer-content">
+          <h3>Quick Links</h3>
+          <ul class="list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about-us">About us</a></li>
+            <li><a href="#countact-us">Contact us</a></li>
+          </ul>
+        </div>
+
+        <!-- Follow Us Section -->
+        <div class="footer-content">
+          <h3>Follow Us</h3>
+          <ul class="social-icons">
+            <li>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="bottom-bar">
+        <p>&copy; 2025 Portfolio.io, All rights reserved</p>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const loginLink = document.getElementById('login-link');
+        const logoutLink = document.getElementById('logout-link');
+        const buildCta = document.getElementById('build-cta');
+        let isAuthed = false;
+        try { isAuthed = localStorage.getItem('isAuthed') === 'true'; } catch (_) {}
+        if (isAuthed) {
+          if (loginLink) loginLink.style.display = 'none';
+          if (logoutLink) logoutLink.style.display = 'inline';
+        }
+        fetch('http://localhost:5001/api/auth/profile', { credentials: 'include' })
+          .then(r => { if (r.ok) return r.json(); throw new Error(); })
+          .then(() => {
+            isAuthed = true;
+            if (loginLink) loginLink.style.display = 'none';
+            if (logoutLink) logoutLink.style.display = 'inline';
+          })
+          .catch(() => {
+            if (!isAuthed) {
+              if (loginLink) loginLink.style.display = 'inline';
+              if (logoutLink) logoutLink.style.display = 'none';
+            }
+          });
+        if (logoutLink) {
+          logoutLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            try { localStorage.removeItem('isAuthed'); } catch (_) {}
+            fetch('http://localhost:5001/api/auth/logout', { method: 'POST', credentials: 'include' })
+              .finally(() => { window.location.href = './forms/login.html'; });
+          });
+        }
+        if (buildCta) {
+          buildCta.addEventListener('click', function () {
+            if (isAuthed) {
+              window.location.href = './info_form/info.html';
+            } else {
+              window.location.href = './forms/signup.html';
+            }
+          });
+        }
+        const navBuild = document.getElementById('nav-build');
+        if (navBuild) {
+          navBuild.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (isAuthed) {
+              window.location.href = './info_form/info.html';
+            } else {
+              window.location.href = './forms/signup.html';
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

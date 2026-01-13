@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Template</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #12215e, #0073ff9d, #51bfff);
+      color: #fff;
+    }
+    nav {
+      background-color: #141d28;
+      height: 80px;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center; /* Center the content in the navbar */
+      padding: 0 20px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    main {
+      padding-top: 160px; /* Ensure 80px space between the navbar and the template container */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .logo span {
+      color: #0073ff;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      text-align: center;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    .template-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+    }
+    .template {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    .template:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+    }
+    .template h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .template p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    .template i {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #fdbb2d;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <label class="logo">Portfolio<span>.io</span></label>
+  </nav>
+  <main>
+    <h1>Select a Portfolio Template</h1>
+    <div class="template-container" id="template-container">
+      <!-- Static Template 1 -->
+      <div class="template" onclick="selectTemplate('template1','portfolio.html')">
+        <i class="fas fa-paint-brush"></i>
+        <h2>Template 1</h2>
+        <p>Classic, clean design.</p>
+      </div>
+      <!-- Static Template 2 -->
+      <div class="template" onclick="selectTemplate('template2','portfolio.html')">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Template 2</h2>
+        <p>Modern, bold style.</p>
+      </div>
+      <!-- Static Template 3 -->
+      <div class="template" onclick="selectTemplate('template3','portfolio.html')">
+        <i class="fas fa-gem"></i>
+        <h2>Template 3</h2>
+        <p>Minimalist approach.</p>
+      </div>
+    </div>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {});
+
+    // Function to display templates based on the portfolio data
+    // We intentionally do not render dynamic templates here to keep only 3 static cards.
+
+    // Function to handle template selection and redirection
+    function selectTemplate(templateId, href) {
+      const target = href || "portfolio.html";
+      const sep = target.includes('?') ? '&' : '?';
+      window.location.href = `${target}${sep}t=${encodeURIComponent(templateId)}`;
+    }
+  </script>
+</body>
+</html>
